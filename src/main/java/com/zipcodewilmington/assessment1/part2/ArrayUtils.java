@@ -1,5 +1,10 @@
 package com.zipcodewilmington.assessment1.part2;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -11,7 +16,13 @@ public class ArrayUtils {
      * Given an array of objects, named `objectArray`, and an object `objectToCount`, return the number of times the `objectToCount` appears in the `objectArray`
      */
     public static Integer getNumberOfOccurrences(Object[] objectArray, Object objectToCount) {
-        return null;
+        Integer count = 0;
+        for(int i = 0; i < objectArray.length; i++){
+            if(objectArray[i] == objectToCount){
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -21,8 +32,31 @@ public class ArrayUtils {
      * Given an array of objects, name `objectArray`, and an object `objectToRemove`, return an array of objects with identical contents excluding `objectToRemove`
      */
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
-        return null;
+        Integer count = 0;
+        for(int i = 0; i < objectArray.length; i++){
+            if(!objectArray[i].equals(objectToRemove)){
+                count++;
+            }
+        }
+        Integer valuesRemovedIndex = 0;
+
+        Object [] valuesRemovedArr = new Object[count];
+        for (int k = 0; k < objectArray.length; k++) {
+            if (!objectArray[k].equals(objectToRemove)) {
+                valuesRemovedArr[valuesRemovedIndex] = objectArray[k];
+                valuesRemovedIndex++;
+            }
+
+        }
+            return valuesRemovedArr;
+
+
     }
+
+
+
+
+
 
     /**
      * @param objectArray an array of any type of Object
@@ -30,7 +64,25 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the most frequently occuring object in the array
      */
     public static Object getMostCommon(Object[] objectArray) {
-        return null;
+        Map<Object, Integer> myMap = new HashMap<>();
+        for (Object i : objectArray){
+            if (myMap.containsKey(i)){
+                myMap.put(i, myMap.get(i)+1);
+            }
+            else {
+                myMap.put(i, 1);
+            }
+        }
+        Integer myValue = 1;
+        Object myKey = 0;
+        Set<Map.Entry<Object, Integer>> entrySet = myMap.entrySet();
+        for (Map.Entry<Object, Integer> entry :entrySet){
+            if (entry.getValue() > myValue){
+                myKey = entry.getKey();
+                myValue= entry.getValue();
+            }
+        }
+        return myKey;
     }
 
 
