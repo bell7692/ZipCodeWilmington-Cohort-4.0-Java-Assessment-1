@@ -1,9 +1,6 @@
 package com.zipcodewilmington.assessment1.part2;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by leon on 2/16/18.
@@ -75,8 +72,8 @@ public class ArrayUtils {
         }
         Integer myValue = 1;
         Object myKey = 0;
-        Set<Map.Entry<Object, Integer>> entrySet = myMap.entrySet();
-        for (Map.Entry<Object, Integer> entry :entrySet){
+        Set<Map.Entry<Object, Integer>> myEntrySet = myMap.entrySet();
+        for (Map.Entry<Object, Integer> entry :myEntrySet){
             if (entry.getValue() > myValue){
                 myKey = entry.getKey();
                 myValue= entry.getValue();
@@ -92,7 +89,25 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the least frequently occuring object in the array
      */
     public static Object getLeastCommon(Object[] objectArray) {
-        return null;
+        Map<Object, Integer> myMap = new HashMap<>();
+        for (Object i : objectArray){
+            if (myMap.containsKey(i)){
+                myMap.put(i, myMap.get(i)+1);
+            }
+            else {
+                myMap.put(i, 1);
+            }
+        }
+        Integer myValue = 1;
+        Object myKey = 0;
+        Set<Map.Entry<Object, Integer>> myEntrySet = myMap.entrySet();
+        for (Map.Entry<Object, Integer> entry :myEntrySet){
+            if (entry.getValue() <= myValue){
+                myKey = entry.getKey();
+                myValue= entry.getValue();
+            }
+        }
+        return myKey;
     }
 
     /**
@@ -102,6 +117,18 @@ public class ArrayUtils {
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
-        return null;
+       Object [] mergedArr = new Object[objectArray.length + objectArrayToAdd.length];
+       Integer mergedArrIndex = 0;
+       for(int i = 0; i < objectArray.length; i++){
+           mergedArr[mergedArrIndex]= objectArray[i];
+           mergedArrIndex++;
+       }
+        for(int i = 0; i < objectArrayToAdd.length; i++){
+            mergedArr[mergedArrIndex]= objectArrayToAdd[i];
+            mergedArrIndex++;
+        }
+        Arrays.sort(mergedArr);
+
+       return mergedArr;
     }
 }

@@ -35,10 +35,11 @@ public class IntegerUtils {
      */
     public static Integer reverseDigits(Integer val) {
 
-//        StringBuilder newString = new StringBuilder();
-//       newString.append(val);
-//       newString.reverse();
+        StringBuilder newString = new StringBuilder();
+       newString.append(val);
 
-        return null;
+       Integer reversedNum = Integer.parseInt(newString.reverse().toString());
+
+        return reversedNum;
     }
 }
