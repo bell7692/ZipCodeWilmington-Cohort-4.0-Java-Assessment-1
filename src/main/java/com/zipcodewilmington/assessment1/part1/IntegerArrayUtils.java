@@ -12,6 +12,8 @@ public class IntegerArrayUtils {
        Integer sumOfNum = 0;
         for (int i = 0; i < intArray.length; i++){
            sumOfNum += intArray[i];
+           //for(int num : intArray){
+            //sumOfNum+=num;
        }
         return sumOfNum;
     }
@@ -33,11 +35,13 @@ public class IntegerArrayUtils {
      * @return the sum of `intArray` divided by number of elements in `intArray`
      */
     public static Double getAverage(Integer[] intArray) {
-        Double sumOfNum = 0.0;
-        for (int i = 0; i < intArray.length; i++){
-            sumOfNum += intArray[i];
-        }
+       // Double sumOfNum = 0.0;
+//        for (int i = 0; i < intArray.length; i++){
+//            sumOfNum += intArray[i];
+//        }
+//
+//        return sumOfNum/intArray.length;
 
-        return sumOfNum/intArray.length;
+        return getSum(intArray)/(double)intArray.length;
     }
 }

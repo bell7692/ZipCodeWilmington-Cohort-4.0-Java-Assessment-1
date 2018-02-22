@@ -10,12 +10,9 @@ public class BasicStringUtils {
      */
     public static String camelCase(String str) {
 
-        StringBuilder myString = new StringBuilder();
-        myString.append(str.substring(0,1).toUpperCase());
-        myString.append(str.substring(1));
-        myString.toString();
+        return new StringBuilder().append(str.substring(0,1).toUpperCase()+str.substring(1)).toString();
 
-        return String.valueOf(myString);
+
     }
 
     /**
@@ -23,8 +20,8 @@ public class BasicStringUtils {
      * @return string with identical contents, in the reverse order
      */
     public static String reverse(String str) {
-        String reversedStr = new StringBuilder(str).reverse().toString();
-        return reversedStr;
+        return new StringBuilder(str).reverse().toString();
+
     }
 
     /**
@@ -32,13 +29,12 @@ public class BasicStringUtils {
      * @return string with identical contents, in reverse order, with first character capitalized
      */
     public static String reverseThenCamelCase(String str) {
-        String reversedStr = new StringBuilder(str).reverse().toString();
-        StringBuilder myString = new StringBuilder();
-        myString.append(reversedStr.substring(0,1).toUpperCase());
-        myString.append(reversedStr.substring(1));
-        myString.toString();
 
-        return String.valueOf(myString);
+
+        return BasicStringUtils.camelCase(BasicStringUtils.reverse(str));
+        //reverse frst then camelCase
+        //return BasicStringUtils.reverse(BasicStringUtils.camelCase(str));
+        //camelCase then reverse because camelcase is inside the parenthesis so it will come first
     }
 
 
@@ -47,8 +43,7 @@ public class BasicStringUtils {
      * @return string with identical contents excluding first and last character
      */
     public static String removeFirstAndLastCharacter(String str) {
-        String reversedStr = new StringBuilder(str).substring(1, str.length()-1).toString();
-        return reversedStr;
+        return str.substring(1, str.length()-1);
     }
 
     /**

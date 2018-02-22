@@ -3,25 +3,19 @@ package com.zipcodewilmington.assessment1.part5;
 public class Palindrome {
 
     public Integer countPalindromes(String input){
-        StringBuilder subStrings = new StringBuilder();
+
+        Integer countOfPalindromes = 0;
         for(int i = 0; i < input.length(); i++){
             for (int n = i+1; n <= input.length(); n++){
-                subStrings.append(input.substring(i,n) + " ");
+                StringBuilder subStrings = new StringBuilder(input.substring(i,n));
+                subStrings.reverse();
+                if(input.substring(i,n).equals(subStrings.toString())){
+                    countOfPalindromes++;
+                    //within the loop, takes one substring and reverses it and add to the count
+                }
             }
         }
-        subStrings.deleteCharAt(subStrings.length()-1);
-        Integer countOfPalindromes = 0;
-        String [] subStringsInRegularOrder = subStrings.toString().split(" ");
-        String[] reversedSubStrings = subStrings.reverse().toString().split(" ");
-        for (int k = 0; k < subStringsInRegularOrder.length; k++){
-            if (subStringsInRegularOrder[k].equalsIgnoreCase(reversedSubStrings[k])){
-                countOfPalindromes++;
-            }
-        }
-
-
-
-        return countOfPalindromes;
+     return countOfPalindromes;
     }
 
 }

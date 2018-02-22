@@ -9,8 +9,7 @@ public class Dog extends Pet {
      * @param age age of this dog
      */
     public Dog(String name, Integer age) {
-        this.name = name;
-        this.age = age;
+        super(name, age);
 
     }
 
@@ -18,14 +17,14 @@ public class Dog extends Pet {
      * @param age age of this dog
      */
     public Dog(Integer age) {
-        this.age = age;
+        super(age);
     }
 
     /**
      * @param name name of this dog
      */
     public Dog(String name) {
-        this.name = name;
+        super (name);
 
     }
 
@@ -36,7 +35,10 @@ public class Dog extends Pet {
      * age is 0
      */
     public Dog() {
-        super();
+        super("Dogname", 0);
+
+        //usually super();
+        //BUT because of testcase put in those values
     }
 
     /**

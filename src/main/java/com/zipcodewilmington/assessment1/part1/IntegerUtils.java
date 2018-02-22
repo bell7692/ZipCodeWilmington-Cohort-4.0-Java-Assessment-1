@@ -12,7 +12,7 @@ public class IntegerUtils {
      */
     public static Integer getSumOfN(Integer n) {
        Integer sumOfN = 0;
-       for (int i = 0; i <= n; i++){
+       for (int i = 0; i < n; i++){
           sumOfN += i;
        }
         return sumOfN;
@@ -36,10 +36,6 @@ public class IntegerUtils {
     public static Integer reverseDigits(Integer val) {
 
         StringBuilder newString = new StringBuilder();
-       newString.append(val);
-
-       Integer reversedNum = Integer.parseInt(newString.reverse().toString());
-
-        return reversedNum;
+        return Integer.parseInt(newString.append(val).reverse().toString());
     }
 }
